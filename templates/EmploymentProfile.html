@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Apna Market</title>
+    <style>
+        #navmenu
+        {
+            width: 100%;
+            overflow: hidden;
+            padding:0 0 8px 0;
+            position: fixed;
+            background-color: #00CED1;
+            border-radius: 5px;
+            opacity: 0.9;
+        }
+
+        #footermenu
+        {
+            width: 100%;
+            overflow: hidden;
+            padding:0 0 8px 0;
+            background-color: #00CED1;
+            //opacity: 0.8;
+
+        }
+
+        .navlink li
+        {
+            display: inline;
+            padding: 12px 50px;
+            float:right;
+            text-align:center;
+            color: white;
+            font-family: Verdana,Sans-Serif;
+            font-size: 12px;
+            //border-style: solid;
+            border-width: 1px;
+            border-radius:10px;
+
+        }
+
+        .footerlink li
+        {
+            display: inline;
+            padding: 15px 50px;
+            float:right;
+            text-align:center;
+            color: white;
+            font-family: Georgia,Serif;
+            font-size: 12px;
+
+        }
+
+        [id ^="navr"]
+        {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        [id ^="fotr"]
+        {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .navlink li:hover
+        {
+            background-color: #92d3ed;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        .footerlink li:hover
+        {
+            background-color: #92d3ed;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+
+        }
+
+
+        #navlogo
+        {
+            background-color:#40E0D0;
+            font-family: 'Brush Script MT',cursive;
+            font-size: 16px;
+            float: left;
+            border-style: none;
+            border-radius:30px;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        #footerlogo
+        {
+            background-color:#40E0D0;
+            font-family: 'Brush Script MT',cursive;
+            font-size: 16px;
+            float: left;
+            border-style: none;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        #navr5
+        {
+            color: white;
+
+        }
+
+        #fotr5
+        {
+            color: white;
+        }
+
+        #heroimage
+        {
+            border-top-style: solid;
+            border-top-width: 85px;
+            border-top-color: white;
+            border-radius: 50px;
+            box-shadow: 10px 15px 10px grey;
+            background-image: url("{% static 'images/img.png' %}");
+            background-size: 100% 500px;
+            width:100%;
+            height:500px;
+            margin:auto;
+        }
+
+        #feedbackimage
+        {
+            border-top-style: solid;
+            border-top-width: 0px;
+            border-top-color: white;
+            border-radius: 50px;
+            box-shadow: 10px 15px 10px grey;
+            background-image: url("{% static 'images/img011.gif' %}");
+            background-size: 100% 500px;
+            width:60%;
+            height:500px;
+            margin:auto;
+        }
+
+        .heroslide
+        {
+            display: none;
+        }
+
+        img.heroslide
+        {
+            display: none;
+            width: 90%;
+            height:500px;
+            width:100%;
+            border-radius: 50px;
+        }
+
+        .feedslide
+        {
+            display: none;
+        }
+
+        img.feedslide
+        {
+            display: none;
+            width: 90%;
+            height:500px;
+            width:100%;
+            border-radius: 50px;
+        }
+
+        #feedimage
+        {
+          margin-top: 200px;
+        }
+
+        button.herobtn
+        {
+              height: 50px;
+              width: 50px;
+              background-color: white;
+              opacity: 0.4;
+              border-radius:2px;
+              position : absolute;
+        }
+
+        #herobtn1
+        {
+            box-shadow: -10px 10px 20px grey;
+            top: 350px;
+            left:55px;
+        }
+        #herobtn2
+        {
+            box-shadow: 10px 10px 20px grey;
+            top: 350px;
+            right:55px;
+        }
+        #herobtn3
+        {
+            box-shadow: -10px 10px 20px grey;
+            top: 5700px;
+            left:205px;
+        }
+        #herobtn4
+        {
+            box-shadow: 10px 10px 20px grey;
+            top: 5700px;
+            right:205px;
+        }
+
+        .contentcard
+        {
+            text-align:left;
+            color: white;
+            font-family: Verdana,Sans-Serif;
+            font-size: 16px;
+            width: 20%;
+            box-shadow: 10px 10px 20px grey;
+            background-color: #1E90FF;
+            //border-radius:20px;
+            padding:10px;
+        }
+
+        .contentcard:hover
+        {
+            transform: scale(1.1,1.1);
+            transition-duration: 2s;
+            transition-timing-function:ease;
+            color:#ffff4d;
+            box-shadow: 10px 10px 20px #cccccc;
+        }
+
+        .contentimage
+        {
+            padding: 5px 0px 0px 0px;
+            width: 250px;
+            height: 100px;
+            border-radius:10px;
+        }
+
+        #cardquote
+        {
+          float:left;
+          margin-left: 80px;
+        }
+
+        #cardquote1
+        {
+          float:left;
+          margin-left: 140px;
+        }
+
+       #cardquote2
+        {
+          float:left;
+          margin-left: 140px;
+        }
+
+        #cardquote3
+        {
+            position:absolute;
+            right: 900px;
+            top: 1400px;
+        }
+
+        #cardquote4
+        {
+            position:absolute;
+            right: 500px;
+            top: 1400px;
+        }
+
+        #cardquote5
+        {
+            position:absolute;
+            right: 100px;
+            top: 1400px;
+        }
+
+        #cardquote6
+        {
+            position:absolute;
+            right: 900px;
+            top: 2000px;
+        }
+
+        #cardquote7
+        {
+            position:absolute;
+            right: 500px;
+            top: 2000px;
+        }
+
+        #cardquote8
+        {
+            position:absolute;
+            right: 100px;
+            top: 2000px;
+        }
+
+        #cardquote9
+        {
+            position:absolute;
+            right: 900px;
+            top: 2600px;
+        }
+
+        #cardquote10
+        {
+            position:absolute;
+            right: 500px;
+            top: 2600px;
+        }
+
+        #cardquote11
+        {
+            position:absolute;
+            right: 100px;
+            top: 2600px;
+        }
+
+        body
+        {
+            //background-color:#FFFAFA;
+            //background-image: url("{% static 'images/img14.png' %}");
+            //background-attachment: fixed;
+        }
+
+        html
+       {
+            scroll-behavior: smooth;
+       }
+
+       .pinfo
+       {
+            //border-radius:10px;
+            height:30px;
+            margin-left:30px;
+            border: 1px solid black;
+            border-width:1px;
+       }
+
+       .transaction
+       {
+           //border: 1px solid black;
+           border-spacing:30px;
+           margin-left:150px;
+           margin-right:20px;
+           //border-width:1px;
+           //border-radius:20px;
+           background-color:#1E90FF;
+           box-shadow: 10px 10px 20px grey;
+           color:white;
+           opacity:0.9;
+       }
+
+       .transaction:hover
+        {
+            transform: scale(1.1,1.1);
+            transition-duration: 2s;
+            transition-timing-function:ease;
+            color:#ffff4d;
+            box-shadow: 10px 10px 20px #cccccc;
+        }
+
+       tr:nth-child(even){background-color:#00BFFF;}
+       table
+       {
+          border-collapse:collapse;
+          width:80%;
+       }
+
+       .receipt
+       {
+           margin-left:300px;
+           margin-right:20px;
+           //border-radius:20px;
+           background-color:#00BFFF;
+           box-shadow: 10px 10px 20px grey;
+           color:white;
+           opacity:0.9;
+           padding:30px 0px 30px 100px;
+           width:40%;
+       }
+
+       .receipt:hover
+        {
+            transform: scale(1.1,1.1);
+            transition-duration: 2s;
+            transition-timing-function:ease;
+            color:#ffff4d;
+            box-shadow: 10px 10px 10px #cccccc;
+            background-color:#1E90FF;
+        }
+
+        #receipt1
+       {
+           display:none;
+       }
+
+       #receipt1:hover
+        {
+            transform: scale(1.1,1.1);
+            transition-duration: 2s;
+            transition-timing-function:ease;
+            color:#ffff4d;
+            box-shadow: 10px 10px 10px #cccccc;
+            background-color:#1E90FF;
+        }
+
+       .lablereceipt
+       {
+            font-family: Georgia,Serif;
+            font-size:20px;
+       }
+
+       .paymentbtn
+       {
+            border-radius:10px;
+            background-color:white;
+            width:40%;
+            margin-left:110px;
+
+       }
+
+       .paymentbtn1
+       {
+            border-radius:10px;
+            background-color:#1E90FF;
+            width:20%;
+            margin-left:340px;
+            box-shadow: 10px 10px 10px #cccccc;
+            color:white;
+       }
+        .paymentbtn2
+       {
+            border-radius:10px;
+            background-color:#00e699;
+            width:20%;
+            margin-left:20px;
+            box-shadow: 10px 10px 10px #cccccc;
+            color:white;
+       }
+
+    </style>
+
+    <script>
+        var sindex=1;
+        showSlide(sindex);
+
+        function nextSlide(n)
+        {
+            showSlide(sindex=sindex+n);
+
+        }
+
+        function showSlide(n)
+        {
+            var i;
+            var slide = document.getElementsByClassName("heroslide");
+
+            if(n>slide.length)
+            {
+                sindex=1;
+            }
+            if(n<1)
+            {
+                sindex=slide.length;
+            }
+            for(i=0;i<slide.length;i++)
+            {
+                slide[i].style.display="none";
+            }
+            slide[sindex-1].style.display="block";
+
+        }
+
+    </script>
+
+
+    <script>
+        var sindex=1;
+        showSlides(sindex);
+
+        function nextSlides(n)
+        {
+            showSlides(sindex=sindex+n);
+
+        }
+
+        function showSlides(n)
+        {
+            var i;
+            var slide = document.getElementsByClassName("feedslide");
+
+            if(n>slide.length)
+            {
+                sindex=1;
+            }
+            if(n<1)
+            {
+                sindex=slide.length;
+            }
+            for(i=0;i<slide.length;i++)
+            {
+                slide[i].style.display="none";
+            }
+            slide[sindex-1].style.display="block";
+
+        }
+
+    </script>
+
+    <script>
+        function show_hide(n)
+        {
+            var emp = document.getElementById("receipt");
+            var ser = document.getElementById("receipt1");
+
+            if(n==1)
+            {
+                ser.style.display="none";
+                emp.style.display="block";
+                emp.style.transform="rotateY(360deg)";
+                emp.style.transitionDuration="4s";
+            }
+            else
+            {
+                emp.style.display="none";
+                ser.style.display="block";
+                ser.style.transform="rotateY(360deg)";
+                ser.style.transitionDuration="4s";
+                ser.style.background="#00CED1";
+            }
+        }
+    </script>
+
+    <script>
+        function message(n)
+        {
+            if(n==1)
+            {
+                alert("Your profile is sent to recruiter , you will be contacted soon..");
+            }
+            else
+            {
+                alert("Your appointment is booked with transporter , your will be contacted soon..");
+            }
+        }
+    </script>
+
+
+
+</head>
+<body>
+
+<div id="navmenu">
+    <ul class="navlink">
+        <li><a id="navr4" href="#cardquote">Support</a></li>
+        <li><a id="navr3" href="http://127.0.0.1:8000/Login">Login</a></li>
+        <li><a id="navr2" href="http://127.0.0.1:8000/Tutorial">Tutorial</a></li>
+        <li><a id="navr7" href="http://127.0.0.1:8000/Employment">Employment</a></li>
+        <li><a id="navr6" href="http://127.0.0.1:8000/Wholesale">Wholesale</a></li>
+        <li><a id="navr1" href="http://127.0.0.1:8000/Market">Market</a></li>
+        <li><a id="navr0" href="http://127.0.0.1:8000/">About</a></li>
+        <li class="navlog" id="navlogo"><a id="navr5" href="#xyz">Apna Market</a></li>
+    </ul>
+</div>
+
+<div id="aboutimage">
+    <div id="heroimage" align="center">
+        <img class="heroslide" src="{% static 'images/img.png' %}">
+        <img class="heroslide" src="{% static 'images/img1.png' %}">
+        <img class="heroslide" src="{% static 'images/img2.png' %}">
+        <img class="heroslide" src="{% static 'images/img3.png' %}">
+        <img class="heroslide" src="{% static 'images/img04.png' %}">
+        <img class="heroslide" src="{% static 'images/img5.png' %}">
+
+        <button class="herobtn" id="herobtn1" onclick="nextSlide(-1)">&#10094;</button>
+        <button class="herobtn" id="herobtn2" onclick="nextSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+    <h1 align="center">Enter Personal Details</h1><br><br>
+    <button class="paymentbtn1" onclick="show_hide(1)"><h3>Employment</h3></button>
+    <button class="paymentbtn2" onclick="show_hide(2)"><h3>Service</h3></button><br><br><br><br>
+
+    <form id="receipt" class="receipt">
+    <lable class="lablereceipt">Enter Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable ><input class="pinfo" type="text" placeholder="xyz"><br><br><br><br>
+    <lable class="lablereceipt">Enter City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="text" placeholder="Mumbai"><br><br><br><br>
+    <lable class="lablereceipt">Enter State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="text" placeholder="Maharashtra"><br><br><br><br>
+    <lable class="lablereceipt">Enter Pincode:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="number" placeholder="400016"><br><br><br><br>
+        <lable class="lablereceipt">Select Document:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="text" autocomplete="on"><br><br><br><br>
+    <lable class="lablereceipt">Upload Document:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="file" ><br><br><br><br>
+    <lable class="lablereceipt">Upload Photo:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="file" ><br><br><br><br>
+       <lable class="lablereceipt">Mobile Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="tel" placeholder="9999999999" autocomplete="on"><br><br><br><br>
+     <lable class="lablereceipt">I accept the policy:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="checkbox" ><br><br><br><br>
+    <button class="paymentbtn" onclick="message(1)"><h3>Submit</h3></button>
+    </form>
+
+    <form id="receipt1" class="receipt">
+    <lable class="lablereceipt">Farm Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable ><input class="pinfo" type="text" placeholder="xyz"><br><br><br><br>
+    <lable class="lablereceipt">Enter City:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="text" placeholder="Mumbai"><br><br><br><br>
+    <lable class="lablereceipt">Enter State:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="text" placeholder="Maharashtra"><br><br><br><br>
+    <lable class="lablereceipt">Enter Pincode:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="number" placeholder="400016"><br><br><br><br>
+        <lable class="lablereceipt">Appointment Date:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="date" autocomplete="on"><br><br><br><br>
+    <lable class="lablereceipt">Mobile Number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="tel" placeholder="9999999999" autocomplete="on"><br><br><br><br>
+     <lable class="lablereceipt">I accept the policy:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</lable><input class="pinfo" type="checkbox" ><br><br><br><br>
+    <button class="paymentbtn" onclick="message(2)"><h3>Submit</h3></button>
+    </form>
+
+<br><br><br><br><br><hr>
+
+<div id="feedimage">
+    <div id="feedbackimage" align="center">
+        <img class="feedslide" src="{% static 'images/img11.gif' %}">
+        <img class="feedslide" src="{% static 'images/img12.png' %}">
+        <img class="feedslide" src="{% static 'images/img13.png' %}">
+
+        <button class="herobtn" id="herobtn3" onclick="nextSlides(-1)">&#10094;</button>
+        <button class="herobtn" id="herobtn4" onclick="nextSlides(1)">&#10095;</button>
+    </div>
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+<div id="footermenu">
+    <ul class="footerlink">
+        <li><a id="fotr4" href="#cardquote">Support</a></li>
+        <li><a id="fotr3" href="http://127.0.0.1:8000/Login">Login</a></li>
+        <li><a id="fotr2" href="http://127.0.0.1:8000/Tutorial">Tutorial</a></li>
+        <li><a id="fotr7" href="http://127.0.0.1:8000/Market">Employment</a></li>
+        <li><a id="fotr6" href="http://127.0.0.1:8000/Market">Wholesale</a></li>
+        <li><a id="fotr1" href="http://127.0.0.1:8000/Market">Market</a></li>
+        <li><a id="fotr0" href="http://127.0.0.1:8000/">About</a></li>
+        <li class="footerlog" id="footerlogo"><a id="fotr5" href="http://127.0.0.1:8000/">Apna Market</a></li>
+    </ul>
+</div>
+
+
+
+</body>
+</html>

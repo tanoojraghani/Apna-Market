@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Apna Market</title>
+    <style>
+        #navmenu
+        {
+            width: 100%;
+            overflow: hidden;
+            padding:0 0 8px 0;
+            position: fixed;
+            background-color: #00CED1;
+            border-radius: 5px;
+            opacity: 0.9;
+        }
+
+        #footermenu
+        {
+            width: 100%;
+            overflow: hidden;
+            padding:0 0 8px 0;
+            background-color: #00CED1;
+            //opacity: 0.8;
+
+        }
+
+        .navlink li
+        {
+            display: inline;
+            padding: 12px 50px;
+            float:right;
+            text-align:center;
+            color: white;
+            font-family: Verdana,Sans-Serif;
+            font-size: 12px;
+            //border-style: solid;
+            border-width: 1px;
+            border-radius:10px;
+
+        }
+
+        .footerlink li
+        {
+            display: inline;
+            padding: 15px 50px;
+            float:right;
+            text-align:center;
+            color: white;
+            font-family: Georgia,Serif;
+            font-size: 12px;
+
+        }
+
+        [id ^="navr"]
+        {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        [id ^="fotr"]
+        {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .navlink li:hover
+        {
+            background-color: #92d3ed;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        .footerlink li:hover
+        {
+            background-color: #92d3ed;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+
+        }
+
+
+        #navlogo
+        {
+            background-color:#40E0D0;
+            font-family: 'Brush Script MT',cursive;
+            font-size: 16px;
+            float: left;
+            border-style: none;
+            border-radius:30px;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        #footerlogo
+        {
+            background-color:#40E0D0;
+            font-family: 'Brush Script MT',cursive;
+            font-size: 16px;
+            float: left;
+            border-style: none;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        #navr5
+        {
+            color: white;
+
+        }
+
+        #fotr5
+        {
+            color: white;
+        }
+
+        #heroimage
+        {
+            border-top-style: solid;
+            border-top-width: 85px;
+            border-top-color: white;
+            border-radius: 50px;
+            box-shadow: 10px 15px 10px grey;
+            background-image: url("{% static 'images/img.png' %}");
+            background-size: 100% 500px;
+            width:100%;
+            height:500px;
+            margin:auto;
+        }
+
+        #feedbackimage
+        {
+            border-top-style: solid;
+            border-top-width: 0px;
+            border-top-color: white;
+            border-radius: 50px;
+            box-shadow: 10px 15px 10px grey;
+            background-image: url("{% static 'images/img011.gif' %}");
+            background-size: 100% 500px;
+            width:60%;
+            height:500px;
+            margin:auto;
+        }
+
+        .heroslide
+        {
+            display: none;
+        }
+
+        img.heroslide
+        {
+            display: none;
+            width: 90%;
+            height:500px;
+            width:100%;
+            border-radius: 50px;
+        }
+
+        .feedslide
+        {
+            display: none;
+        }
+
+        img.feedslide
+        {
+            display: none;
+            width: 90%;
+            height:500px;
+            width:100%;
+            border-radius: 50px;
+        }
+
+        #feedimage
+        {
+          margin-top: 1300px;
+        }
+
+        button.herobtn
+        {
+              height: 50px;
+              width: 50px;
+              background-color: white;
+              opacity: 0.4;
+              border-radius:2px;
+              position : absolute;
+        }
+
+        #herobtn1
+        {
+            box-shadow: -10px 10px 20px grey;
+            top: 350px;
+            left:55px;
+        }
+        #herobtn2
+        {
+            box-shadow: 10px 10px 20px grey;
+            top: 350px;
+            right:55px;
+        }
+        #herobtn3
+        {
+            box-shadow: -10px 10px 20px grey;
+            top: 3450px;
+            left:205px;
+        }
+        #herobtn4
+        {
+            box-shadow: 10px 10px 20px grey;
+            top: 3450px;
+            right:205px;
+        }
+
+        .contentcard
+        {
+            text-align:center;
+            color: white;
+            font-family: Verdana,Sans-Serif;
+            font-size: 16px;
+            width: 25%;
+            box-shadow: 10px 10px 20px grey;
+            background-color: #00CED1;
+            //border-radius:20px;
+
+
+        }
+
+        .innercontent
+        {
+            text-align:justify;
+            color:white;
+            font-family: Georgia,Serif;
+            padding: 5px 0px 5px 5px;
+            border-radius:10px;
+            margin-left: 5px;
+            margin-right: 5px;
+            text-shadow:1px 1px 4px grey;
+
+        }
+
+        div.contentcard:hover
+        {
+            transform: scale(1.1,1.1);
+            transition-duration: 2s;
+            transition-timing-function:ease;
+            color:#ffff4d;
+            box-shadow: 10px 10px 20px #cccccc;
+        }
+
+        .contentimage
+        {
+            padding: 5px 0px 0px 0px;
+            width: 300px;
+            height: 200px;
+            border-radius:20px;
+
+        }
+
+        #cardquote
+        {
+          float:left;
+          margin-left: 20px;
+        }
+
+        #cardabout
+        {
+          float:left;
+          margin-left: 140px;
+        }
+
+        #cardmotive
+        {
+          float:left;
+          margin-left: 140px;
+        }
+
+        #cardmarket
+        {
+            position:absolute;
+            right: 915px;
+            top: 1600px;
+        }
+
+        #cardwholesale
+        {
+            position:absolute;
+            right: 480px;
+            top: 1600px;
+        }
+
+        #cardmark
+        {
+            position:absolute;
+            right: 20px;
+            top: 1600px;
+        }
+
+        #cardemployment
+        {
+            position:absolute;
+            right: 915px;
+            top: 2400px;
+        }
+
+        #cardtransport
+        {
+            position:absolute;
+            right: 480px;
+            top: 2400px;
+        }
+
+        #cardintent
+        {
+            position:absolute;
+            right: 20px;
+            top: 2400px;
+        }
+
+        body
+        {
+            background-color:white;
+            //background-image: url("{% static 'images/img14.png' %}");
+            //background-attachment: fixed;
+        }
+
+        html
+       {
+            scroll-behavior: smooth;
+       }
+
+
+    </style>
+
+    <script>
+        var sindex=1;
+        showSlide(sindex);
+
+        function nextSlide(n)
+        {
+            showSlide(sindex=sindex+n);
+
+        }
+
+        function showSlide(n)
+        {
+            var i;
+            var slide = document.getElementsByClassName("heroslide");
+
+            if(n>slide.length)
+            {
+                sindex=1;
+            }
+            if(n<1)
+            {
+                sindex=slide.length;
+            }
+            for(i=0;i<slide.length;i++)
+            {
+                slide[i].style.display="none";
+            }
+            slide[sindex-1].style.display="block";
+
+        }
+
+    </script>
+
+
+    <script>
+        var sindex=1;
+        showSlides(sindex);
+
+        function nextSlides(n)
+        {
+            showSlides(sindex=sindex+n);
+
+        }
+
+        function showSlides(n)
+        {
+            var i;
+            var slide = document.getElementsByClassName("feedslide");
+
+            if(n>slide.length)
+            {
+                sindex=1;
+            }
+            if(n<1)
+            {
+                sindex=slide.length;
+            }
+            for(i=0;i<slide.length;i++)
+            {
+                slide[i].style.display="none";
+            }
+            slide[sindex-1].style.display="block";
+
+        }
+
+    </script>
+
+
+
+</head>
+<body>
+
+<div id="navmenu">
+    <ul class="navlink">
+        <li><a id="navr4" href="http://127.0.0.1:8000/Support">Support</a></li>
+        <li><a id="navr3" href="http://127.0.0.1:8000/Login">Login</a></li>
+        <li><a id="navr2" href="http://127.0.0.1:8000/Tutorial">Tutorial</a></li>
+        <li><a id="navr7" href="http://127.0.0.1:8000/Employment">Employment</a></li>
+        <li><a id="navr6" href="http://127.0.0.1:8000/Wholesale">Wholesale</a></li>
+        <li><a id="navr1" href="http://127.0.0.1:8000/Market">Market</a></li>
+        <li><a id="navr0" href="http://127.0.0.1:8000/">About</a></li>
+        <li class="navlog" id="navlogo"><a id="navr5" href="#xyz">Apna Market</a></li>
+    </ul>
+</div>
+
+<div id="aboutimage">
+    <div id="heroimage" align="center">
+        <img class="heroslide" src="{% static 'images/img.png' %}">
+        <img class="heroslide" src="{% static 'images/img1.png' %}">
+        <img class="heroslide" src="{% static 'images/img2.png' %}">
+        <img class="heroslide" src="{% static 'images/img3.png' %}">
+        <img class="heroslide" src="{% static 'images/img04.png' %}">
+        <img class="heroslide" src="{% static 'images/img5.png' %}">
+
+        <button class="herobtn" id="herobtn1" onclick="nextSlide(-1)">&#10094;</button>
+        <button class="herobtn" id="herobtn2" onclick="nextSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<hr>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="contentcard" id="cardquote">
+    <img  class="contentimage" src="{% static 'images/img6.gif' %}">
+    <h2>To Those Who Work In Acres, Not In Hours</h2>
+    <hr>
+    <div class="innercontent">Our vision is to promote
+    uniformity in agriculture marketing by streamlining of procedures across the integrated markets,
+    removing information asymmetry between buyers and sellers and promoting real time price discovery
+        based on actual demand and supply.</div><br>
+</div>
+
+<div class="contentcard" id="cardabout">
+    <img  class="contentimage" src="{% static 'images/img7.gif' %}">
+    <h2>Understand Learn Use</h2>
+    <hr>
+   <div class="innercontent"> We believe that each farmer in our country is capable of producing lot more cultivation by our own traditional approach , just proper
+    education is important for it , for which we provide farming tutorials.
+    To make maximum out of it we have also provided guidelines to help farmers and users understand website in detail.
+   </div><br>
+</div>
+
+<div class="contentcard" id="cardmotive">
+    <img  class="contentimage" src="{% static 'images/img8.gif' %}">
+    <h2>Your Farm Our Technology</h2>
+    <hr>
+    <div class="innercontent">Our motive is to integration of APMCs across the country through a common online market platform to facilitate pan-India
+    trade in agriculture commodities, providing better price discovery through transparent auction process based on quality
+        of produce along with timely online payment.</div>
+    <br>
+</div>
+
+
+<div class="contentcard" id="cardmarket">
+    <img  class="contentimage" src="{% static 'images/img9.gif' %}">
+    <h2>Apna Market Apna Kisan</h2>
+    <hr>
+    <div class="innercontent">This section consists of different  farmer related profiles with each profile stating  the  farmers
+    personal details , products available and feedback-rating.The user can directly select a profile or
+    can filter them  on basis of location of farmer or product.After selecting a profile user can go through
+    the price of the products demanded  by farmer  , add to cart the products and finallypay via payment
+        gateway.</div>
+    <br>
+</div>
+
+<div class="contentcard" id="cardwholesale">
+    <img  class="contentimage" src="{% static 'images/img32.gif' %}">
+    <h2>Apna Wholesale Apna Kisan</h2>
+    <hr>
+    <div class="innercontent">This section consists of different  wholesaler related profiles with each profile stating  the  wholesalers
+    personal details , products needed and feedback-rating.The user can directly select a profile or
+    can filter them  on basis of location of wholesaler or product.After selecting a profile user can go through
+    the buying price of the products put-forward by wholesaler  , select the products and choose a payment
+        option.</div>
+    <br>
+</div>
+
+<div class="contentcard" id="cardmark">
+    <img  class="contentimage" src="{% static 'images/img10.gif' %}">
+    <h2>Apna Kisan Swabhimani</h2>
+    <hr>
+    <div class="innercontent">We have also focused on providing  different agriculture  related news , where users can directly
+    select the news or filter  it on the basis of news organization.
+    We also have tried to provide weather related information. This will  help farmers to plan their work according to weather forecast
+    in their region.Also for any queries, contact related information of developers,NGO's and governments agro-oragnization.
+    </div>
+    <br>
+</div>
+
+<div class="contentcard" id="cardemployment">
+    <img  class="contentimage" src="{% static 'images/img33.gif' %}">
+    <h2>Apna Kisan Apna Samman</h2>
+    <hr>
+    <div class="innercontent">Here we focus on providing different employment opportunities for the
+        position as workers in farms and retail shops. The employers profile will display the work details,
+        accommodation , duration and pay details (optional) users can select an employer profile or filter by
+        location of employer and position. After selecting a profile user can chat with the employer. </div>
+    <br>
+</div>
+
+<div class="contentcard" id="cardtransport">
+    <img  class="contentimage" src="{% static 'images/img34.gif' %}">
+    <h2>Har Ghar Kisan<br><br></h2>
+    <hr>
+    <div class="innercontent">This section consists of transport service providers,
+        each providers profile will be displayed with personal details and pay (optional) .The users can
+        directly select a profile or filter on the basis of location of transporter. After selecting a
+        profile users can chat with the transporter. Users have to pay basic price for confirming booking
+        via payment gateway.</div>
+    <br>
+</div>
+
+<div class="contentcard" id="cardintent">
+    <img  class="contentimage" src="{% static 'images/img35.gif' %}">
+    <h2>Apna Kisan Apna Bhavishya</h2>
+    <hr>
+    <div class="innercontent"> In future will be  focusing on making
+        android application available for the same initiative. Also try to provide online interactive video lectures
+        available related to different agricultural concepts, make website available in more regional languages
+        and last but not the least to integrate video chatting platform to provide a better user experience.</div>
+    <br>
+</div>
+
+
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+
+
+<div id="feedimage">
+    <div id="feedbackimage" align="center">
+        <img class="feedslide" src="{% static 'images/img011.gif' %}">
+        <img class="feedslide" src="{% static 'images/img12.png' %}">
+        <img class="feedslide" src="{% static 'images/img13.png' %}">
+
+        <button class="herobtn" id="herobtn3" onclick="nextSlides(-1)">&#10094;</button>
+        <button class="herobtn" id="herobtn4" onclick="nextSlides(1)">&#10095;</button>
+    </div>
+</div>
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<div id="footermenu">
+    <ul class="footerlink">
+        <li><a id="fotr4" href="http://127.0.0.1:8000/Support">Support</a></li>
+        <li><a id="fotr3" href="http://127.0.0.1:8000/Login">Login</a></li>
+        <li><a id="fotr2" href="http://127.0.0.1:8000/Tutorial">Tutorial</a></li>
+        <li><a id="fotr7" href="http://127.0.0.1:8000/Employment">Employment</a></li>
+        <li><a id="fotr6" href="http://127.0.0.1:8000/Wholesale">Wholesale</a></li>
+        <li><a id="fotr1" href="http://127.0.0.1:8000/Market">Market</a></li>
+        <li><a id="fotr0" href="http://127.0.0.1:8000/">About</a></li>
+        <li class="footerlog" id="footerlogo"><a id="fotr5" href="http://127.0.0.1:8000/">Apna Market</a></li>
+    </ul>
+</div>
+
+
+<!-- Start of ChatBot (www.chatbot.com) code -->
+<script type="text/javascript">
+    window.__be = window.__be || {};
+    window.__be.id = "61711b7dc0935e00076df7cb";
+    (function() {
+        var be = document.createElement('script'); be.type = 'text/javascript'; be.async = true;
+        be.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.chatbot.com/widget/plugin.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(be, s);
+    })();
+</script>
+<!-- End of ChatBot code -->
+
+</body>
+</html>

@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Apna Market</title>
+    <style>
+        #navmenu
+        {
+            width: 100%;
+            overflow: hidden;
+            padding:0 0 8px 0;
+            position: fixed;
+            background-color: #00CED1;
+            border-radius: 5px;
+            opacity: 0.9;
+        }
+
+        #footermenu
+        {
+            width: 100%;
+            overflow: hidden;
+            padding:0 0 8px 0;
+            background-color: #00CED1;
+            //opacity: 0.8;
+
+        }
+
+        .navlink li
+        {
+            display: inline;
+            padding: 12px 50px;
+            float:right;
+            text-align:center;
+            color: white;
+            font-family: Verdana,Sans-Serif;
+            font-size: 12px;
+            //border-style: solid;
+            border-width: 1px;
+            border-radius:10px;
+
+        }
+
+        .footerlink li
+        {
+            display: inline;
+            padding: 15px 50px;
+            float:right;
+            text-align:center;
+            color: white;
+            font-family: Georgia,Serif;
+            font-size: 12px;
+
+        }
+
+        [id ^="navr"]
+        {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        [id ^="fotr"]
+        {
+            display: block;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .navlink li:hover
+        {
+            background-color: #92d3ed;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        .footerlink li:hover
+        {
+            background-color: #92d3ed;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+
+        }
+
+
+        #navlogo
+        {
+            background-color:#40E0D0;
+            font-family: 'Brush Script MT',cursive;
+            font-size: 16px;
+            float: left;
+            border-style: none;
+            border-radius:30px;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        #footerlogo
+        {
+            background-color:#40E0D0;
+            font-family: 'Brush Script MT',cursive;
+            font-size: 16px;
+            float: left;
+            border-style: none;
+            box-shadow: 5px 5px 2px brown;
+            font-weight: bold;
+        }
+
+        #navr5
+        {
+            color: white;
+
+        }
+
+        #fotr5
+        {
+            color: white;
+        }
+
+        #heroimage
+        {
+            border-top-style: solid;
+            border-top-width: 85px;
+            border-top-color: white;
+            border-radius: 50px;
+            box-shadow: 10px 15px 10px grey;
+            background-image: url("{% static 'images/img.png' %}");
+            background-size: 100% 500px;
+            width:100%;
+            height:500px;
+            margin:auto;
+        }
+
+        #feedbackimage
+        {
+            border-top-style: solid;
+            border-top-width: 0px;
+            border-top-color: white;
+            border-radius: 50px;
+            box-shadow: 10px 15px 10px grey;
+            background-image: url("{% static 'images/img011.gif' %}");
+            background-size: 100% 500px;
+            width:60%;
+            height:500px;
+            margin:auto;
+        }
+
+        .heroslide
+        {
+            display: none;
+        }
+
+        img.heroslide
+        {
+            display: none;
+            width: 90%;
+            height:500px;
+            width:100%;
+            border-radius: 50px;
+        }
+
+        .feedslide
+        {
+            display: none;
+        }
+
+        img.feedslide
+        {
+            display: none;
+            width: 90%;
+            height:500px;
+            width:100%;
+            border-radius: 50px;
+        }
+
+        #feedimage
+        {
+          margin-top: 1300px;
+        }
+
+        button.herobtn
+        {
+              height: 50px;
+              width: 50px;
+              background-color: white;
+              opacity: 0.4;
+              border-radius:2px;
+              position : absolute;
+        }
+
+        #herobtn1
+        {
+            box-shadow: -10px 10px 20px grey;
+            top: 350px;
+            left:55px;
+        }
+        #herobtn2
+        {
+            box-shadow: 10px 10px 20px grey;
+            top: 350px;
+            right:55px;
+        }
+        #herobtn3
+        {
+            box-shadow: -10px 10px 20px grey;
+            top: 5250px;
+            left:260px;
+        }
+        #herobtn4
+        {
+            box-shadow: 10px 10px 20px grey;
+            top: 5250px;
+            right:260px;
+        }
+
+        .contentcard
+        {
+            text-align:left;
+            color: white;
+            font-family: Verdana,Sans-Serif;
+            font-size: 16px;
+            width: 70%;
+            box-shadow: 10px 10px 20px grey;
+            background-color: #00e699;
+            //border-radius:40px;
+            margin-left: 200px;
+            padding:1px;
+        }
+
+        .innerheader
+        {
+          background-color: #1E90FF;
+          padding:10px 0px 2px 15px;
+          color:white;
+          font-size:18px;
+        }
+
+        .contentcard:hover
+        {
+            transform: scale(1.1,1.1);
+            transition-duration: 2s;
+            transition-timing-function:ease;
+            color:#ffff4d;
+            box-shadow: 10px 10px 20px #cccccc;
+        }
+
+        .contentimage
+        {
+            padding: 15px;
+            width: 110px;
+            height: 110px;
+            border-radius:100px;
+            float:right;
+        }
+
+        #feedimage
+        {
+          margin-top: 100px;
+        }
+
+        body
+        {
+            //background-color:#FFFAFA;
+            //background-image: url("{% static 'images/img14.png' %}");
+            //background-attachment: fixed;
+        }
+
+        html
+       {
+            scroll-behavior: smooth;
+       }
+
+    </style>
+
+    <script>
+        var sindex=1;
+        showSlide(sindex);
+
+        function nextSlide(n)
+        {
+            showSlide(sindex=sindex+n);
+
+        }
+
+        function showSlide(n)
+        {
+            var i;
+            var slide = document.getElementsByClassName("heroslide");
+
+            if(n>slide.length)
+            {
+                sindex=1;
+            }
+            if(n<1)
+            {
+                sindex=slide.length;
+            }
+            for(i=0;i<slide.length;i++)
+            {
+                slide[i].style.display="none";
+            }
+            slide[sindex-1].style.display="block";
+
+        }
+
+    </script>
+
+
+    <script>
+        var sindex=1;
+        showSlides(sindex);
+
+        function nextSlides(n)
+        {
+            showSlides(sindex=sindex+n);
+
+        }
+
+        function showSlides(n)
+        {
+            var i;
+            var slide = document.getElementsByClassName("feedslide");
+
+            if(n>slide.length)
+            {
+                sindex=1;
+            }
+            if(n<1)
+            {
+                sindex=slide.length;
+            }
+            for(i=0;i<slide.length;i++)
+            {
+                slide[i].style.display="none";
+            }
+            slide[sindex-1].style.display="block";
+
+        }
+
+    </script>
+
+
+
+</head>
+<body>
+
+<div id="navmenu">
+    <ul class="navlink">
+        <li><a id="navr4" href="#cardquote">Support</a></li>
+        <li><a id="navr3" href="http://127.0.0.1:8000/Login">Login</a></li>
+        <li><a id="navr2" href="http://127.0.0.1:8000/Tutorial">Tutorial</a></li>
+        <li><a id="navr7" href="http://127.0.0.1:8000/Employment">Employment</a></li>
+        <li><a id="navr6" href="http://127.0.0.1:8000/Wholesale">Wholesale</a></li>
+        <li><a id="navr1" href="http://127.0.0.1:8000/Market">Market</a></li>
+        <li><a id="navr0" href="http://127.0.0.1:8000/">About</a></li>
+        <li class="navlog" id="navlogo"><a id="navr5" href="#xyz">Apna Market</a></li>
+    </ul>
+</div>
+
+<div id="aboutimage">
+    <div id="heroimage" align="center">
+        <img class="heroslide" src="{% static 'images/img.png' %}">
+        <img class="heroslide" src="{% static 'images/img1.png' %}">
+        <img class="heroslide" src="{% static 'images/img2.png' %}">
+        <img class="heroslide" src="{% static 'images/img3.png' %}">
+        <img class="heroslide" src="{% static 'images/img04.png' %}">
+        <img class="heroslide" src="{% static 'images/img5.png' %}">
+
+        <button class="herobtn" id="herobtn1" onclick="nextSlide(-1)">&#10094;</button>
+        <button class="herobtn" id="herobtn2" onclick="nextSlide(1)">&#10095;</button>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<hr>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="contentcard" id="cardquote">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img36.png' %}"></a>
+        <h2 align="center">Agro Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion<br><br></div>
+
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote1">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img37.png' %}"></a>
+    <h2 align="center">Veggie Traders and Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400018<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote2">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img38.png' %}"></a>
+    <h2 align="center">Agro Services and Wholesale</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote3">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img39.png' %}"></a>
+    <h2 align="center">VEGGIE CART WHOLESALERS </h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote4">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img40.png' %}"></a>
+    <h2 align="center">Green Farms Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote5">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img36.png' %}"></a>
+    <h2 align="center">Fresh Veggies Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote6">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img37.png' %}"></a>
+    <h2 align="center">Top Farm Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote7">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img38.png' %}"></a>
+    <h2 align="center">Green Agro Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote8">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img39.png' %}"></a>
+    <h2 align="center">Tops Agro Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><br><br>
+
+<div class="contentcard" id="cardquote9">
+    <a href="http://127.0.0.1:8000/WholesaleProfile"><img  class="contentimage" src="{% static 'images/img40.png' %}"></a>
+    <h2 align="center">Nature Fresh Veggie Wholesalers</h2>
+    <div class="innerheader">
+    <b>City</b>: Mumbai&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>State</b> : Maharashtra&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Pincode</b> : 400028<br><br>
+    <b>Type 1</b>  : FlaxSeeds , Rajgira Seeds ,Sunflower Seeds.<br><br>
+    <b>Type 2</b>  : <b>Leafy green</b> – lettuce, spinach&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Cruciferous</b> – cabbage, cauliflower<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Marrow</b> – pumpkin, cucumber&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Root</b> – potato<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <b>Edible plant stem</b> – asparagus&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Allium</b> – onion, garlic<br><br>
+    </div>
+</div>
+<br><br><br><br><br><br><hr><br><br>
+
+<div id="feedimage">
+    <div id="feedbackimage" align="center">
+        <img class="feedslide" src="{% static 'images/img011.gif' %}">
+        <img class="feedslide" src="{% static 'images/img12.png' %}">
+        <img class="feedslide" src="{% static 'images/img13.png' %}">
+
+        <button class="herobtn" id="herobtn3" onclick="nextSlides(-1)">&#10094;</button>
+        <button class="herobtn" id="herobtn4" onclick="nextSlides(1)">&#10095;</button>
+    </div>
+</div>
+
+
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+<div id="footermenu">
+    <ul class="footerlink">
+        <li><a id="fotr4" href="#cardquote">Support</a></li>
+        <li><a id="fotr3" href="http://127.0.0.1:8000/Login">Login</a></li>
+        <li><a id="fotr2" href="http://127.0.0.1:8000/Tutorial">Tutorial</a></li>
+        <li><a id="fotr7" href="http://127.0.0.1:8000/Employment">Employment</a></li>
+        <li><a id="fotr6" href="http://127.0.0.1:8000/Wholesale">Wholesale</a></li>
+        <li><a id="fotr1" href="http://127.0.0.1:8000/Market">Market</a></li>
+        <li><a id="fotr0" href="http://127.0.0.1:8000/">About</a></li>
+        <li class="footerlog" id="footerlogo"><a id="fotr5" href="http://127.0.0.1:8000/">Apna Market</a></li>
+    </ul>
+</div>
+
+
+
+</body>
+</html>
